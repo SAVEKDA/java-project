@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/models/po/Businessinformation.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/models/po/Self_Financingorders.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/models/po/Shareorders.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/models/po/Userdetailinfo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/models/po/Userinformation.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/models/po/Userregister.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>

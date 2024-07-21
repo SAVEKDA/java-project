@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.example.mapper.UserListMapper">
+    <resultMap id="UserlistResultMap" type="org.example.models.po.Userinformation">
+        <result column="序号" property="序号" />
+        <result column="用户账号" property="用户账号" />
+        <result column="用户昵称" property="用户昵称" />
+        <result column="手机号" property="手机号" />
+        <result column="所属运营商" property="所属运营商" />
+        <result column="归属地区" property="归属地区" />
+        <result column="车牌号" property="车牌号" />
+        <result column="余额" property="余额" />
+        <result column="状态" property="状态" />
+        <result column="注册时间" property="注册时间" />
+    </resultMap>
+    <select id="selectUserlist" resultMap="UserlistResultMap">
+        select
+        *
+        from userinformation
+        where 1=1 and deletesign = 0
+        <if test="用户账号 != null and 用户账号 != ''">
+            and 用户账号 like CONCAT('%', #{用户账号}, '%')
+        </if>
+        <if test="手机号 != null and 手机号 != ''">
+            and 手机号 like CONCAT('%', #{手机号}, '%')
+        </if>
+        <if test="所属运营商 != null and 所属运营商 != ''">
+            and 所属运营商 like CONCAT('%', #{所属运营商}, '%')
+        </if>
+        <if test="归属地区 != null and 归属地区 != ''">
+            and 归属地区 = #{归属地区}
+        </if>
+        <if test="状态 != null and 状态 != ''">
+            and 状态 = #{状态}
+        </if>
+    </select>
+</mapper>

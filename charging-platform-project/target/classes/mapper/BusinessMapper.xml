@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.example.mapper.BusinessMapper">
+    <resultMap id="businessInfoResultMap" type="org.example.models.po.Businessinformation">
+        <result column="序号" property="序号"/>
+        <result column="商户Id" property="商户Id"/>
+        <result column="账号" property="账号"/>
+        <result column="账号密码" property="账号密码"/>
+        <result column="账号类型" property="账号类型"/>
+        <result column="商户名称" property="商户名称"/>
+        <result column="运营类型" property="运营类型"/>
+        <result column="共享类型" property="共享类型"/>
+        <result column="信用代码" property="信用代码"/>
+        <result column="身份证号" property="身份证号"/>
+        <result column="联系人" property="联系人"/>
+        <result column="联系方式" property="联系方式"/>
+        <result column="所属代理" property="所属代理"/>
+        <result column="创建时间" property="创建时间"/>
+        <result column="启停状态" property="启停状态"/>
+        <result column="审批状态" property="审批状态"/>
+        <!-- 其他字段 -->
+    </resultMap>
+    <select id="selectBusinessinfo" resultMap="businessInfoResultMap">
+       select
+       *
+       from businessinformation
+                where 1=1
+        <if test="商户名称 != null and 商户名称 != ''">
+            and 商户名称 like CONCAT('%', #{商户名称}, '%')
+        </if>
+        <if test="账号类型 != null and 账号类型 != ''">
+            and 账号类型 = #{账号类型}
+        </if>
+        <if test="运营类型 != null and 账号类型 != ''">
+            and 运营类型 = #{运营类型}
+        </if>
+        <if test="共享类型 != null and 共享类型 != ''">
+            and 共享类型 = #{共享类型}
+        </if>
+        <if test="启停状态 != null and 启停状态 != ''">
+            and 启停状态 = #{启停状态}
+        </if>
+        <if test="审批状态 != null and 审批状态 != ''">
+            and 审批状态 = #{审批状态}
+        </if>
+    </select>
+    <update id="EditorBusinessinfo">
+        UPDATE
+        businessinformation
+        set 联系方式 = #{联系方式},
+            <if test="所属代理 != null and 所属代理 != ''">
+                所属代理 = #{所属代理},
+            </if>
+            联系人 = #{联系人},账号类型 = #{账号类型} where 账号 = #{登录账号}
+    </update>
+</mapper>

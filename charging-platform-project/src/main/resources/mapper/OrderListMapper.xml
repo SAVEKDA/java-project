@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.example.mapper.OrderListMapper">
+    <resultMap id="ShareordersResultMap" type="org.example.models.po.Shareorders">
+        <id property="序号" column="序号" />
+        <result property="订单编号" column="订单编号" />
+        <result property="订单状态" column="订单状态" />
+        <result property="订单类型" column="订单类型" />
+        <result property="用户账号" column="用户账号" />
+        <result property="所属商户" column="所属商户" />
+        <result property="电桩编号" column="电桩编号" />
+        <result property="充电时长" column="充电时长" />
+        <result property="订单金额" column="订单金额" />
+        <result property="支付金额" column="支付金额" />
+        <result property="创建时间" column="创建时间" />
+    </resultMap>
+    <resultMap id="SelfordersResultMap" type="org.example.models.po.Self_Financingorders">
+        <id property="序号" column="序号" />
+        <result property="订单编号" column="订单编号" />
+        <result property="订单状态" column="订单状态" />
+        <result property="订单类型" column="订单类型" />
+        <result property="用户账号" column="用户账号" />
+        <result property="所属商户" column="所属商户" />
+        <result property="电桩编号" column="电桩编号" />
+        <result property="充电时长" column="充电时长" />
+        <result property="订单金额" column="订单金额" />
+        <result property="支付金额" column="支付金额" />
+        <result property="创建时间" column="创建时间" />
+    </resultMap>
+    <select id="SelectShareorderlist" resultMap="ShareordersResultMap">
+        select * from shareorders where 1=1
+        <if test="订单编号 != null and 订单编号 != ''">
+            and 订单编号 like CONCAT('%',#{订单编号}, '%')
+        </if>
+        <if test="电桩编号 != null and 电桩编号 != ''">
+            and 电桩编号 like CONCAT('%',#{电桩编号}, '%')
+        </if>
+        <if test="订单状态 != null and 订单状态 != ''">
+            and 订单状态 = #{订单状态}
+        </if>
+        <if test="订单类型 != null and 订单类型 != ''">
+            and 订单类型 = #{订单类型}
+        </if>
+        <if test="用户账号 != null and 用户账号 != ''">
+            and 用户账号 like CONCAT('%',#{用户账号}, '%')
+        </if>
+    </select>
+    <select id="SelectSelforderlist" resultMap="SelfordersResultMap">
+        select * from selffinancingorders where 1=1
+        <if test="订单编号 != null and 订单编号 != ''">
+            and 订单编号 like CONCAT('%',#{订单编号}, '%')
+        </if>
+        <if test="电桩编号 != null and 电桩编号 != ''">
+            and 电桩编号 like CONCAT('%',#{电桩编号}, '%')
+        </if>
+        <if test="订单状态 != null and 订单状态 != ''">
+            and 订单状态 = #{订单状态}
+        </if>
+        <if test="订单类型 != null and 订单类型 != ''">
+            and 订单类型 = #{订单类型}
+        </if>
+        <if test="用户账号 != null and 用户账号 != ''">
+            and 用户账号 like CONCAT('%',#{用户账号}, '%')
+        </if>
+    </select>
+</mapper>
